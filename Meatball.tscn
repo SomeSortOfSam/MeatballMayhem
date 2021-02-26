@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="MeatBall" type="KinematicBody2D"]
-position = Vector2( 17, 0 )
 collision_mask = 6
 script = ExtResource( 2 )
+jumpHeight = 32.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.34375, 0.34375 )

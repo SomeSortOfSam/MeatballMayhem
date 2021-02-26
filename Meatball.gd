@@ -1,21 +1,19 @@
 extends KinematicBody2D
 
-export(float) var speed = 100
-export(float) var gravity = 10
-export(float) var jumpHeight = 20
+export(float) var acceleration = 100
+export(float) var maxSpeed = 300
+export(float) var gravity = 9.8
+export(float) var jumpHeight = 10
 var velocity = Vector2.ZERO
 
-func _physics_process(delta):
-	velocity.y += gravity
+func _physics_process(_delta):
 	var inputVector = Vector2.ZERO
-	inputVector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	
+	inputVector.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * acceleration
 	if is_on_floor() && Input.is_action_just_pressed("ui_up"):
-		inputVector.y -= jumpHeight
-	
-	if inputVector != Vector2.ZERO:
-		velocity += inputVector * speed
+		velocity.y -= jumpHeight * gravity
 	else:
-		velocity.x = lerp(0,velocity.x,.9)
+		inputVector.y += gravity
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	velocity += inputVector
+	velocity.x = lerp(clamp(velocity.x,-maxSpeed,maxSpeed),0,.1)
+	velocity = move_and_slide(velocity,Vector2.UP)
