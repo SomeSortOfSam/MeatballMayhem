@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="MeatballMayhem"
-run/main_scene="res://Level.tscn"
+run/main_scene="res://Levels/Level01.tscn"
 config/icon="res://icon.png"
 
 [input]
@@ -62,6 +62,7 @@ ui_down={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Platform"
 2d_physics/layer_3="Hurt"
+2d_physics/layer_4="Destroy"
 
 [rendering]
 
