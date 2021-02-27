@@ -26,4 +26,5 @@ func _physics_process(_delta):
 
 func kill():
 	emit_signal("death")
-	queue_free()
+	#Checkpoint should free node - remote transform dies before we can get to it otherwise
+	#queue_free()
