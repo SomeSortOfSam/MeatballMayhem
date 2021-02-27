@@ -7,16 +7,17 @@ export(bool) var use_timer = false
 export(float) var up_time = 5
 export(float) var down_time = 2
 
-func _ready():
-	raycast.force_raycast_update()
-	var point = raycast.cast_to
+func _process(delta):
+	var distance = raycast.cast_to.y
 	if raycast.is_colliding():
-		point = raycast.get_collision_point() - global_position
-		point.rotate(rotation)
+		var point = raycast.get_collision_point()
+		
+		hurtboxCollision.set_self_modulate(Color.green)
+		distance = point.distance_to(global_position)
 	var shape = hurtboxCollision.get_shape()
-	shape.set_extents(Vector2(32,point.y))
+	shape.set_extents(Vector2(32,distance/2 - 16))
 	hurtboxCollision.set_shape(shape)
-	hurtboxCollision.position.y += point.y/2 + 16
+	hurtboxCollision.position.y = distance/2 - 16
 
 func _on_Hurtbox_body_entered(body):
 	body.cook()
