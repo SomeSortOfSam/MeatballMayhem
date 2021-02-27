@@ -24,6 +24,7 @@ func replace_tiles(id, packedNode):
 		var node = packedNode.instance()
 		get_tree().current_scene.call_deferred("add_child", node)
 		var pos = map_to_world(hurt)
+		#fix upper left offset
 		pos += Vector2.ONE*(cell_size/2)
 		node.global_position = pos
 		node.get_child(0).texture = tile_set.tile_get_texture(id)
