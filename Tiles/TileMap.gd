@@ -1,6 +1,6 @@
 extends TileMap
 
-onready var KillNode = preload("res://Tiles/KillNode.tscn")
+onready var KillNode = preload("res://Tiles/Spikes.tscn")
 onready var DestroyNode = preload("res://Tiles/DestroyNode.tscn")
 onready var WinNode = preload("res://Tiles/Level Win.tscn")
 onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
@@ -40,7 +40,6 @@ func replace_tiles(id, packedNode, preserveRotation = false):
 		#fix upper left offset
 		pos += Vector2.ONE*(cell_size/2)
 		node.global_position = pos
-		node.get_child(0).texture = tile_set.tile_get_texture(id)
 		if preserveRotation:
 			var rotation = 0
 			if is_cell_y_flipped(hurt.x,hurt.y):
