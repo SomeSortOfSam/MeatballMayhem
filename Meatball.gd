@@ -11,6 +11,7 @@ export(float) var jumpHeight = 10
 var velocity = Vector2.ZERO
 
 var checkpoint = Vector2.ZERO
+var cooked = false
 
 func set_checkpoint(point):
 	checkpoint = point
@@ -33,6 +34,14 @@ func _on_HurtBox_body_entered(body):
 	main.add_child(deadMeat)
 	deadMeat.global_position = global_position
 	global_position = checkpoint
+	emit_signal("death")
 
 func _on_DestroyBox_body_entered(body):
 	global_position = checkpoint
+	emit_signal("death")
+
+func _on_CookBox_body_entered(body):
+	cooked = true
+
+func _on_MeatBall_death():
+	cooked = false

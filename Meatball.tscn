@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Meatball.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 height = 0.309563
 
 [sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 8 )
 
 [node name="MeatBall" type="KinematicBody2D"]
@@ -36,5 +39,14 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyBox"]
 modulate = Color( 1, 0, 0, 1 )
 shape = SubResource( 2 )
+
+[node name="CookBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CookBox"]
+shape = SubResource( 3 )
+[connection signal="death" from="." to="." method="_on_MeatBall_death"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="body_entered" from="DestroyBox" to="." method="_on_DestroyBox_body_entered"]
+[connection signal="body_entered" from="CookBox" to="." method="_on_CookBox_body_entered"]
