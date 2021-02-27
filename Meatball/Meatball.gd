@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal death
+signal new_checkpoint
 
 export(float) var acceleration = 100
 export(float) var maxSpeed = 300
@@ -8,10 +9,8 @@ export(float) var gravity = 9.8
 export(float) var jumpHeight = 10
 var velocity = Vector2.ZERO
 
-var checkpoint = Vector2.ZERO
-
-func set_checkpoint(point):
-	checkpoint = point
+func set_new_checkpoint():
+	emit_signal("new_checkpoint")
 
 func _physics_process(_delta):
 	var inputVector = Vector2.ZERO
@@ -27,5 +26,4 @@ func _physics_process(_delta):
 
 func kill():
 	emit_signal("death")
-	global_position = checkpoint
-	
+	queue_free()

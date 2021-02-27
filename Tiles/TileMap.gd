@@ -3,6 +3,7 @@ extends TileMap
 onready var KillNode = preload("res://Tiles/KillNode.tscn")
 onready var DestroyNode = preload("res://Tiles/DestroyNode.tscn")
 onready var WinNode = preload("res://Tiles/Level Win.tscn")
+onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
 
 export(int) var killID = 1
 export(int) var destroyID = 2
@@ -16,6 +17,7 @@ func _ready():
 	replace_tiles(destroyID, DestroyNode)
 	for winNode in replace_tiles(winID, WinNode):
 		winNode.nextLevel = nextLevel
+	replace_tiles(checkpointId, CheckpointNode)
 
 func replace_tiles(id, packedNode):
 	var hurts = get_used_cells_by_id(id)
