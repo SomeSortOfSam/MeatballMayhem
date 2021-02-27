@@ -23,7 +23,9 @@ func replace_tiles(id, packedNode):
 	for hurt in hurts:
 		var node = packedNode.instance()
 		get_tree().current_scene.call_deferred("add_child", node)
-		node.global_position = map_to_world(hurt)
+		var pos = map_to_world(hurt)
+		pos += Vector2.ONE*(cell_size/2)
+		node.global_position = pos
 		node.get_child(0).texture = tile_set.tile_get_texture(id)
 		set_cellv(hurt,-1)
 		nodes.push_back(node)
