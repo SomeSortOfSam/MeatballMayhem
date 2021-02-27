@@ -4,12 +4,14 @@ onready var KillNode = preload("res://Tiles/KillNode.tscn")
 onready var DestroyNode = preload("res://Tiles/DestroyNode.tscn")
 onready var WinNode = preload("res://Tiles/Level Win.tscn")
 onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
+onready var OvenNode = preload("res://Tiles/Oven.tscn")
 
 export(int) var killID = 1
 export(int) var destroyID = 2
 export(int) var winID = 3
 export(String, FILE, "*.tscn") var nextLevel = "res://Levels/Level.tscn"
 export(int) var checkpointId = 4
+export(int) var ovenId = 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +20,7 @@ func _ready():
 	for winNode in replace_tiles(winID, WinNode):
 		winNode.nextLevel = nextLevel
 	replace_tiles(checkpointId, CheckpointNode)
+	replace_tiles(ovenId, OvenNode)
 
 func replace_tiles(id, packedNode):
 	var hurts = get_used_cells_by_id(id)

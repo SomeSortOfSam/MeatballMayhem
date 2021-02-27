@@ -9,6 +9,8 @@ export(float) var gravity = 9.8
 export(float) var jumpHeight = 10
 var velocity = Vector2.ZERO
 
+var cooked = false
+
 func set_new_checkpoint():
 	emit_signal("new_checkpoint")
 
@@ -28,3 +30,10 @@ func kill():
 	emit_signal("death")
 	#Checkpoint should free node - remote transform dies before we can get to it otherwise
 	#queue_free()
+
+func cook():
+	if cooked:
+		kill()
+	else:
+		cooked = true
+		$Sprite.set_self_modulate(Color.brown)
