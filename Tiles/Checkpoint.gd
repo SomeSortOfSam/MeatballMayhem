@@ -20,6 +20,8 @@ func _on_meatball_death():
 	meatball.global_position = global_position
 	curMeatball.remove_child(cameraTransform)
 	meatball.add_child(cameraTransform)
+	meatball.cooked = curMeatball
+	meatball.get_node("Sprite").set_self_modulate(curMeatball.get_node("Sprite").self_modulate)
 	curMeatball.queue_free()
 	curMeatball = meatball
 
