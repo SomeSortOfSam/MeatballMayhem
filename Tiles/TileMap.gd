@@ -37,19 +37,21 @@ func _ready():
 	
 	replace_tiles(flamethrowerId,FlamethrowerNode,true)
 	
-	for kebab in replace_tiles(kebabHeadId, KebabHeadNode):
-		var angle = kebab.rotation
-		var direction = Vector2(cos(angle), sin(angle))
-		while get_cellv(world_to_map(kebab) + direction) == kebabSpikeId:
+	for kebab in replace_tiles(kebabHeadId, KebabHeadNode, true):
+		var pos = world_to_map(kebab.global_position)
+		var direction = get_cell_rotationV(pos)
+		kebab.tileRange = 0
+		while get_cellv(pos + direction) == kebabSpikeId:
 			kebab.tileRange += 1
+			pos += direction
 
 func replace_tiles(id, packedNode, preserveRotation = false):
-	var hurts = get_used_cells_by_id(id)
+	var cells = get_used_cells_by_id(id)
 	var nodes = []
-	for hurt in hurts:
+	for cell in cells:
 		var node = packedNode.instance()
 		get_tree().current_scene.call_deferred("add_child", node)
-		var pos = map_to_world(hurt)
+		var pos = map_to_world(cell)
 		#fix upper left offset
 		pos += Vector2.ONE*(cell_size/2)
 		
@@ -57,12 +59,13 @@ func replace_tiles(id, packedNode, preserveRotation = false):
 		node.get_child(0).texture = tile_set.tile_get_texture(id)
 		
 		if preserveRotation:
-			node.rotate(get_cell_rotation(hurt))
+			node.rotate(get_cell_rotation(cell))
 		
-		set_cellv(hurt,-1)
+		set_cellv(cell,-1)
 		nodes.push_back(node)
 	return nodes
 
+#90: transpose and flip x. 180: flip x and flip y. 270: transpose and flip y.
 func get_cell_rotation(cell):
 	var rotation = 0
 	if is_cell_y_flipped(cell.x,cell.y):
@@ -70,3 +73,12 @@ func get_cell_rotation(cell):
 	if is_cell_transposed(cell.x,cell.y):
 		rotation += PI/2
 	return rotation
+
+func get_cell_rotationV(cell):
+	if is_cell_transposed(cell.x, cell.y) && is_cell_x_flipped(cell.x,cell.y):
+		return Vector2.RIGHT
+	elif is_cell_x_flipped(cell.x,cell.y) && is_cell_y_flipped(cell.x,cell.y):
+		return Vector2.DOWN
+	elif is_cell_transposed(cell.x,cell.y) && is_cell_y_flipped(cell.x,cell.y):
+		return Vector2.LEFT
+	return Vector2.UP

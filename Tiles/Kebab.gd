@@ -12,10 +12,12 @@ func _ready():
 
 func set_collision_boxes(numSkewered):
 	platform.shape.extents.y = (numSkewered + 1) * 32
-	platform.position.y = platform.shape.extents.y
-	hurt.shape.extents.y = (tileRange + 1 - numSkewered) *32
-	hurt.position.y = platform.position.y * 2 + hurt.shape.extents.y
+	platform.position.y = -platform.shape.extents.y + 32
+	hurt.shape.extents.y = (tileRange + 1 - numSkewered) * 32
+	hurt.position.y = platform.position.y * 2 - hurt.shape.extents.y - 32
 	skewered = numSkewered
+	if skewered >= tileRange:
+		hurt.set_disabled(true)
 
 func _on_Hurtbox_body_entered(body):
 	body.kill()
