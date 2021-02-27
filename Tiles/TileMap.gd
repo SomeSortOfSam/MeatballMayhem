@@ -8,6 +8,7 @@ onready var OvenNode = preload("res://Tiles/Oven.tscn")
 onready var FlamethrowerNode = preload("res://Tiles/FlameThrower.tscn")
 
 export(int) var killID = 1
+export(float, 0, 1) var flipPercent = .3
 export(int) var destroyID = 2
 export(int) var winID = 3
 export(String, FILE, "*.tscn") var nextLevel = "res://Levels/Level.tscn"
@@ -17,7 +18,11 @@ export(int) var flamethrowerId = 6
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	replace_tiles(killID, KillNode)
+	#
+	var rand = RandomNumberGenerator.new()
+	for spike in replace_tiles(killID, KillNode):
+		if rand.randf_range(0,1) <= flipPercent:
+			spike.get_node("Sprite").flip_h = true
 	replace_tiles(destroyID, DestroyNode)
 	for winNode in replace_tiles(winID, WinNode):
 		winNode.nextLevel = nextLevel
@@ -37,7 +42,12 @@ func replace_tiles(id, packedNode, preserveRotation = false):
 		node.global_position = pos
 		node.get_child(0).texture = tile_set.tile_get_texture(id)
 		if preserveRotation:
-			pass
+			var rotation = 0
+			if is_cell_y_flipped(hurt.x,hurt.y):
+				rotation += PI
+			if is_cell_transposed(hurt.x,hurt.y):
+				rotation += PI/2
+			node.rotate(rotation)
 		set_cellv(hurt,-1)
 		nodes.push_back(node)
 	return nodes
