@@ -6,14 +6,15 @@ var curMeatball
 var cameraTransform
 
 func _on_Checkpoint_body_entered(body):
-	#disconect previous checkpoint
-	body.set_new_checkpoint()
-	
-	body.connect("death", $".", "_on_meatball_death")
-	body.connect("new_checkpoint", $".", "_on_meatball_disconnect")
-	curMeatball = body
-	cameraTransform = body.get_node("RemoteTransform2D")
-	
+	if curMeatball == null:
+		#disconect previous checkpoint
+		body.set_new_checkpoint()
+		
+		body.connect("death", $".", "_on_meatball_death")
+		body.connect("new_checkpoint", $".", "_on_meatball_disconnect")
+		curMeatball = body
+		cameraTransform = body.get_node("RemoteTransform2D")
+
 func _on_meatball_death():
 	var meatball = Meatball.instance()
 	get_tree().current_scene.call_deferred("add_child",meatball)
@@ -28,3 +29,5 @@ func _on_meatball_death():
 func _on_meatball_disconnect():
 	curMeatball.disconnect("death", $".", "_on_meatball_death")
 	curMeatball.disconnect("new_checkpoint", $".", "_on_meatball_disconnect")
+	curMeatball = null
+	cameraTransform = null
