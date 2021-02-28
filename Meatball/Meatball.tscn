@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Meatball/Uncooked/Idle_2.png" type="Texture" id=1]
 [ext_resource path="res://Meatball/Meatball.gd" type="Script" id=2]
@@ -333,6 +333,59 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
 }
 
+[sub_resource type="Animation" id=9]
+resource_name = "Idel_Uncooked"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
 [sub_resource type="Animation" id=16]
 resource_name = "Idel_cooked"
 length = 0.1
@@ -386,10 +439,10 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "Idel_uncooked"
-length = 0.1
-loop = true
+[sub_resource type="Animation" id=5]
+resource_name = "Jump_Uncooked"
+length = 0.6
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
@@ -400,7 +453,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 1 ) ]
+"values": [ ExtResource( 3 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:vframes")
@@ -412,7 +465,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5 ]
+"values": [ 3 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:hframes")
@@ -424,7 +477,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 4 ]
+"values": [ 2 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:frame")
@@ -433,10 +486,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -492,9 +545,10 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Jump_uncooked"
-length = 0.6
+[sub_resource type="Animation" id=6]
+resource_name = "Midair_Uncooked"
+length = 0.2
+loop = true
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:texture")
@@ -506,7 +560,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:vframes")
@@ -518,7 +572,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 3 ]
+"values": [ 2 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:hframes")
@@ -530,7 +584,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 2 ]
+"values": [ 1 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath(".:frame")
@@ -539,10 +593,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0833333 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5 ]
+"values": [ 0, 1 ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -599,62 +653,8 @@ tracks/3/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Midair_uncooked"
-length = 0.2
-loop = true
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.0833333 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=19]
-resource_name = "Respawn_cooked"
+[sub_resource type="Animation" id=10]
+resource_name = "Respawn_Uncooked"
 length = 1.16667
 step = 0.0833333
 tracks/0/type = "value"
@@ -665,9 +665,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1.1487 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 11 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:vframes")
@@ -706,8 +706,8 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "Respawn_uncooked"
+[sub_resource type="Animation" id=19]
+resource_name = "Respawn_cooked"
 length = 1.16667
 step = 0.0833333
 tracks/0/type = "value"
@@ -718,9 +718,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1.1487 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 11 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:vframes")
@@ -812,6 +812,60 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "Walk_Uncooked"
+length = 0.333333
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
 [sub_resource type="Animation" id=20]
 resource_name = "Walk_cooked"
 length = 0.333333
@@ -866,64 +920,6 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "Walk_uncooked"
-length = 0.333333
-loop = true
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 7 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.0833333, 0.166667, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-
-[sub_resource type="AnimationNodeStateMachine" id=1]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
-
 [sub_resource type="CapsuleShape2D" id=3]
 height = 0.309563
 
@@ -933,34 +929,29 @@ script = ExtResource( 2 )
 jumpHeight = 32.0
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 14 )
-vframes = 5
-hframes = 4
+texture = ExtResource( 7 )
+vframes = 2
+hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-autoplay = "Idel_uncooked"
+autoplay = "Idel_Uncooked"
 anims/Death_Saw_Uncooked = SubResource( 7 )
 anims/Death_Saw_cooked = SubResource( 13 )
 anims/Death_Spike_Uncooked = SubResource( 8 )
 anims/Death_Spike_cooked = SubResource( 14 )
 anims/Fidgit_Uncooked = SubResource( 4 )
 anims/Fidgit_cooked = SubResource( 15 )
+anims/Idel_Uncooked = SubResource( 9 )
 anims/Idel_cooked = SubResource( 16 )
-anims/Idel_uncooked = SubResource( 9 )
+anims/Jump_Uncooked = SubResource( 5 )
 anims/Jump_cooked = SubResource( 17 )
-anims/Jump_uncooked = SubResource( 5 )
+anims/Midair_Uncooked = SubResource( 6 )
 anims/Midair_cooked = SubResource( 18 )
-anims/Midair_uncooked = SubResource( 6 )
+anims/Respawn_Uncooked = SubResource( 10 )
 anims/Respawn_cooked = SubResource( 19 )
-anims/Respawn_uncooked = SubResource( 10 )
 anims/UltraRespawn_Uncooked = SubResource( 11 )
+anims/Walk_Uncooked = SubResource( 12 )
 anims/Walk_cooked = SubResource( 20 )
-anims/Walk_uncooked = SubResource( 12 )
-
-[node name="AnimationTree" type="AnimationTree" parent="Sprite/AnimationPlayer"]
-tree_root = SubResource( 1 )
-anim_player = NodePath("..")
-parameters/playback = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )

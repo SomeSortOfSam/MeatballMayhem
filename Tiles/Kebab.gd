@@ -20,5 +20,5 @@ func set_collision_boxes(numSkewered):
 		hurt.call_deferred("set_disabled",true)
 
 func _on_Hurtbox_body_entered(body):
-	body.kill()
+	body.kill(true)
 	set_collision_boxes(skewered + 1)
