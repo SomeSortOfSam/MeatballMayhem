@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Tiles/TileMap.gd" type="Script" id=1]
 [ext_resource path="res://Meatball/Meatball.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Assets/Flame.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Flamer.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Kebab/KebabMid.png" type="Texture" id=13]
-
+[ext_resource path="res://Assets/Freezer.png" type="Texture" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 64, 64, 0, 64, 64, 0, 64 )
@@ -368,6 +368,20 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 48, 0, 48 )
 12/shape_one_way_margin = 0.0
 12/shapes = [  ]
 12/z_index = 0
+13/name = "Freezer"
+13/texture = ExtResource( 14 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 64, 64 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = -1
 
 [node name="Level" type="Node2D"]
 

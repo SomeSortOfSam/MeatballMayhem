@@ -15,4 +15,3 @@ func _ready():
 
 func _on_Hurtbox_body_entered(body):
 	body.cook()
-
