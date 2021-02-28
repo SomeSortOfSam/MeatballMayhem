@@ -39,9 +39,12 @@ func _ready():
 	
 	for kebab in replace_tiles(kebabHeadId, KebabHeadNode, true):
 		var pos = world_to_map(kebab.global_position)
-		var direction = get_cell_rotationV(pos)
+		var angle = kebab.get_rotation()
+		var direction = Vector2(sin(angle), -cos(angle))
 		kebab.tileRange = 0
-		while get_cellv(pos + direction) != -1:
+		pos += direction
+		while get_cellv(pos) != -1:
+			print(str(pos) + " + " + str(direction) + " has " + str(get_cellv(pos+ direction)))
 			kebab.tileRange += 1
 			set_cellv(pos,-1)
 			pos += direction
@@ -78,9 +81,12 @@ func get_cell_rotation(cell):
 
 func get_cell_rotationV(cell):
 	if is_cell_transposed(cell.x, cell.y) && is_cell_x_flipped(cell.x,cell.y):
-		return Vector2.RIGHT
+		return Vector2.LEFT
 	elif is_cell_x_flipped(cell.x,cell.y) && is_cell_y_flipped(cell.x,cell.y):
 		return Vector2.DOWN
 	elif is_cell_transposed(cell.x,cell.y) && is_cell_y_flipped(cell.x,cell.y):
-		return Vector2.LEFT
-	return Vector2.UP
+		return Vector2.RIGHT
+	elif !is_cell_y_flipped(cell.x,cell.y) && !is_cell_x_flipped(cell.x,cell.y):
+		return Vector2.UP
+	else:
+		return Vector2.ZERO
