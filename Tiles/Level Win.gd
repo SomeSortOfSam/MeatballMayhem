@@ -5,6 +5,8 @@ onready var sprite = $Sprite
 
 export(String, FILE, "*.tscn") var nextLevel
 
+onready var audio = $AudioStreamPlayer2D
+
 export(bool) var requireSalt = false
 export(bool) var requireGarnish = false
 
@@ -19,8 +21,12 @@ func _on_Level_Win_body_entered(body):
 		sprite.frame = 3
 		timer.start(1)
 	else:
+		audio.play()
 		get_tree().change_scene(nextLevel)
-
 
 func _on_Timer_timeout():
 	sprite.frame = 0
+
+
+
+	

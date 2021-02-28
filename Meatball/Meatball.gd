@@ -22,6 +22,8 @@ export(bool) var hasDoneDeluxeRespawn = true
 
 func _ready():
 	set_physics_process(false)
+	audio.set_stream(load("res://Sounds/Respawn.wav"))
+	audio.play()
 	if hasDoneDeluxeRespawn:
 		animate("Respawn","post_ready")
 	else:

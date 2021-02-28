@@ -913,7 +913,7 @@ position = Vector2( 9.53674e-07, -9.53674e-07 )
 scale = Vector2( 2.56, 2.56 )
 frames = SubResource( 194 )
 animation = "Idel_Uncooked"
-frame = 18
+frame = 13
 playing = true
 __meta__ = {
 "_edit_lock_": true
