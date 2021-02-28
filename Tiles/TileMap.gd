@@ -88,17 +88,19 @@ func get_cell_rotationV(cell):
 		return Vector2.ZERO
 
 func replace_tiles_with_length_value(headId, headNode, limbId):
-	for cell in replace_tiles(headId, headNode, true):
-		var pos = world_to_map(cell.global_position)
-		var angle = cell.get_rotation()
+	var nodes = replace_tiles(headId, headNode, true)
+	for node in nodes:
+		var pos = world_to_map(node.global_position)
+		var angle = node.get_rotation()
 		var direction = Vector2(sin(angle), -cos(angle))
-		cell.tileRange = 0
+		node.tileRange = 0
 		pos += direction
 		while get_cellv(pos) == limbId:
 			print(str(pos) + " + " + str(direction) + " has " + tile_set.tile_get_name(get_cellv(pos+ direction)))
-			cell.tileRange += 1
+			node.tileRange += 1
 			markers.push_back(pos)
 			pos += direction
+	return nodes
 
 func clear_marker_tiles():
 	for cell in markers:

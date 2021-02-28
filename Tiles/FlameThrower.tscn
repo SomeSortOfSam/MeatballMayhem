@@ -1,14 +1,91 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tiles/FlameThrower.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Flamer.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Flame.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
-extents = Vector2( 32, 32 )
+extents = Vector2( 1, 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Flame"
+length = 0.25
+loop = true
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333, 0.166667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Startup"
+length = 0.0833333
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Stop"
+length = 0.25
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0833333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="FlameThrower" type="StaticBody2D"]
 collision_layer = 2
@@ -22,12 +99,25 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2( 0, -64 )
 collision_layer = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
 self_modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 0, -64 )
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Hurtbox"]
+scale = Vector2( 0.03125, 0.03125 )
+texture = ExtResource( 3 )
+vframes = 3
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurtbox/Sprite"]
+autoplay = "Flame"
+anims/Flame = SubResource( 3 )
+anims/Startup = SubResource( 4 )
+anims/Stop = SubResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
