@@ -21,6 +21,7 @@ func _on_Checkpoint_body_entered(body):
 		cameraTransform = body.get_node("RemoteTransform2D")
 		
 		$Sprite.frame = 0
+		$AudioStreamPlayer2D.play()
 
 func _on_meatball_death():
 	var meatball = Meatball.instance()

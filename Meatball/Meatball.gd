@@ -12,6 +12,7 @@ var velocity = Vector2.ZERO
 onready var sprite = $AnimatedSprite
 onready var saltHat = $AnimatedSprite/Salt
 onready var garnishHat = $AnimatedSprite/Garnish
+onready var audio = $AudioStreamPlayer2D
 
 var cooked = false
 var salted = false
@@ -47,6 +48,8 @@ func _physics_process(_delta):
 	if is_on_floor() && Input.is_action_just_pressed("ui_up"):
 		velocity.y -= jumpHeight * gravity
 		animate("Jump","fall")
+		audio.set_stream(load("res://Sounds/Jump.wav"))
+		audio.play()
 	else:
 		inputVector.y += gravity
 	
@@ -63,6 +66,8 @@ func fall():
 func kill(deathAnimation : String):
 	set_physics_process(false)
 	animate("Death_" + deathAnimation,"dead")
+	audio.set_stream(load("res://Sounds/" + deathAnimation +".wav"))
+	audio.play()
 
 func dead():
 	sprite.disconnect("animation_finished", $".", "dead")
@@ -71,6 +76,11 @@ func dead():
 	#queue_free()
 
 func cook():
+	
+	if audio is AudioStreamPlayer2D:
+		audio.set_stream(load("res://Sounds/Cook.wav"))
+		audio.play()
+	
 	if cooked:
 		kill("Burn")
 	else:
