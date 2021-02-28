@@ -31,7 +31,7 @@ func _physics_process(_delta):
 	
 	sprite.flip_h = velocity.x <= 0
 
-func fall(_jump):
+func fall():
 	animate("Midair")
 	sprite.disconnect("animation_finished", $".", "fall")
 
@@ -44,6 +44,7 @@ func kill(deathAnimation : String):
 	
 	
 func dead():
+	sprite.disconnect("animation_finished", $".", "dead")
 	emit_signal("death")
 	#Checkpoint should free node - remote transform dies before we can get to it otherwise
 	#queue_free()

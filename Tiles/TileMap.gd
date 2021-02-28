@@ -75,17 +75,6 @@ func get_cell_rotation(cell):
 		rotation += PI/2
 	return rotation
 
-func get_cell_rotationV(cell):
-	if is_cell_transposed(cell.x, cell.y) && is_cell_x_flipped(cell.x,cell.y):
-		return Vector2.LEFT
-	elif is_cell_x_flipped(cell.x,cell.y) && is_cell_y_flipped(cell.x,cell.y):
-		return Vector2.DOWN
-	elif is_cell_transposed(cell.x,cell.y) && is_cell_y_flipped(cell.x,cell.y):
-		return Vector2.RIGHT
-	elif !is_cell_y_flipped(cell.x,cell.y) && !is_cell_x_flipped(cell.x,cell.y):
-		return Vector2.UP
-	else:
-		return Vector2.ZERO
 
 func replace_tiles_with_length_value(headId, headNode, limbId):
 	var nodes = replace_tiles(headId, headNode, true)
@@ -96,7 +85,6 @@ func replace_tiles_with_length_value(headId, headNode, limbId):
 		node.tileRange = 0
 		pos += direction
 		while get_cellv(pos) == limbId:
-			print(str(pos) + " + " + str(direction) + " has " + tile_set.tile_get_name(get_cellv(pos+ direction)))
 			node.tileRange += 1
 			markers.push_back(pos)
 			pos += direction

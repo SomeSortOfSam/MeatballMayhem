@@ -20,6 +20,54 @@
 [ext_resource path="res://Meatball/Cooked/KebabSplat_1.png" type="Texture" id=18]
 [ext_resource path="res://Meatball/Uncooked/KebabSplat.png" type="Texture" id=19]
 
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 13 )
+region = Rect2( 25, 0, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 25, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 13 )
+region = Rect2( 25, 25, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 50, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 13 )
+region = Rect2( 25, 50, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 25, 0, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 25, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 25, 25, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 50, 25, 25 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 3 )
+region = Rect2( 25, 50, 25, 25 )
+
 [sub_resource type="AtlasTexture" id=73]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 25, 25 )
@@ -255,30 +303,6 @@ region = Rect2( 50, 100, 25, 25 )
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 14 )
 region = Rect2( 75, 100, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 3 )
-region = Rect2( 25, 0, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 25, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 3 )
-region = Rect2( 25, 25, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 50, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 3 )
-region = Rect2( 25, 50, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=104]
 atlas = ExtResource( 9 )
@@ -528,30 +552,6 @@ region = Rect2( 0, 75, 25, 25 )
 atlas = ExtResource( 5 )
 region = Rect2( 25, 75, 25, 25 )
 
-[sub_resource type="AtlasTexture" id=63]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=64]
-atlas = ExtResource( 13 )
-region = Rect2( 25, 0, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=65]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 25, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=66]
-atlas = ExtResource( 13 )
-region = Rect2( 25, 25, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=67]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 50, 25, 25 )
-
-[sub_resource type="AtlasTexture" id=68]
-atlas = ExtResource( 13 )
-region = Rect2( 25, 50, 25, 25 )
-
 [sub_resource type="AtlasTexture" id=130]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 25, 25 )
@@ -762,6 +762,16 @@ region = Rect2( 0, 50, 25, 25 )
 
 [sub_resource type="SpriteFrames" id=71]
 animations = [ {
+"frames": [ SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
+"loop": false,
+"name": "Jump_Cooked",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
+"loop": false,
+"name": "Jump_Uncooked",
+"speed": 12.0
+}, {
 "frames": [ SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ), SubResource( 77 ), SubResource( 78 ), SubResource( 79 ), SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ), SubResource( 88 ), SubResource( 89 ), SubResource( 90 ) ],
 "loop": false,
 "name": "Respawn_Deluxe_Uncooked",
@@ -787,11 +797,6 @@ animations = [ {
 "name": "Idel_Cooked",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ) ],
-"loop": false,
-"name": "Jump_Cooked",
-"speed": 12.0
-}, {
 "frames": [ SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ), SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ), SubResource( 120 ) ],
 "loop": false,
 "name": "Death_Saw_Uncooked",
@@ -815,11 +820,6 @@ animations = [ {
 "frames": [ SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ) ],
 "loop": false,
 "name": "Respawn_Uncooked",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
-"loop": false,
-"name": "Jump_Uncooked",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ) ],
@@ -867,7 +867,7 @@ position = Vector2( 9.53674e-07, -9.53674e-07 )
 scale = Vector2( 2.56, 2.56 )
 frames = SubResource( 71 )
 animation = "Idel_Uncooked"
-frame = 12
+frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

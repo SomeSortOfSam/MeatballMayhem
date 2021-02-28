@@ -36,4 +36,8 @@ func set_collision_boxes(numSkewered):
 func _on_Hurtbox_body_entered(body):
 	cooked.push_back(body.cooked)
 	body.kill("Kebab")
+	body.sprite.connect("animation_finished", $".", "extend_kebab")
+
+func extend_kebab():
 	set_collision_boxes(skewered + 1)
+	
