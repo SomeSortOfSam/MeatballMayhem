@@ -15,6 +15,8 @@ func _on_Checkpoint_body_entered(body):
 		connect_meatball(body)
 		was_cooked = body.cooked
 		cameraTransform = body.get_node("RemoteTransform2D")
+		
+		$Sprite.frame = 0
 
 func _on_meatball_death():
 	var meatball = Meatball.instance()
@@ -37,4 +39,4 @@ func _on_meatball_disconnect():
 	curMeatball.disconnect("new_checkpoint", $".", "_on_meatball_disconnect")
 	curMeatball = null
 	cameraTransform = null
-	
+	$Sprite.frame = 1
