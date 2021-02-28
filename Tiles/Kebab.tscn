@@ -50,6 +50,7 @@ shape = SubResource( 2 )
 
 [node name="Numbers" type="Sprite" parent="."]
 texture = ExtResource( 5 )
-vframes = 3
+vframes = 4
 hframes = 3
+frame = 9
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]

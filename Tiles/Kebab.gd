@@ -42,7 +42,12 @@ func set_collision_boxes(numSkewered):
 			midSprite.frame = 2
 	
 	numbers.rotation = -rotation
-	numbers.frame = tileRange - skewered - 1
+	var n = tileRange - skewered
+	if n < 1:
+		n = 9
+	else:
+		n -= 1
+	numbers.frame = n
 	
 	#turn off kebab if at maxium range
 	if skewered >= tileRange:
