@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Tiles/TileMap.gd" type="Script" id=1]
 [ext_resource path="res://Meatball/Meatball.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/Flamer.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Kebab/KebabMid.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Freezer.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Background.png" type="Texture" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 64, 64, 0, 64, 64, 0, 64 )
@@ -404,6 +405,12 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 520, 312 )
+scale = Vector2( 3.44, 2.02667 )
+z_index = -2
+texture = ExtResource( 15 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 0 )
