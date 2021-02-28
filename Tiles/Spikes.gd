@@ -12,7 +12,7 @@ func _on_Kill_body_entered(body):
 	body.sprite.connect("animation_finished", $".", "disable_spikes")
 	
 func disable_spikes():
-	hurtbox.set_deferred("disabled",false)
+	hurtbox.set_deferred("disabled",true)
 	platform.shape.set_extents(Vector2(32,32))
 	platform.set_position(Vector2.ZERO)
 	sprite.frame = 1

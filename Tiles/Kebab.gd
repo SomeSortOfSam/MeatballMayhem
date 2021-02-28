@@ -3,6 +3,7 @@ extends StaticBody2D
 onready var platform = $CollisionShape2D
 onready var hurt = $Hurtbox/CollisionShape2D
 onready var endSprite = $EndSprite
+onready var animationMidSprite = $MidSprite
 
 #hurtbox should extend one PAST this
 export(int) var tileRange = 3
@@ -18,11 +19,19 @@ func _ready():
 
 func set_collision_boxes(numSkewered):
 	skewered = numSkewered
+	
 	platform.shape.extents.y = (skewered + 1) * 32
 	platform.position.y = -platform.shape.extents.y + 32
-	hurt.shape.extents.y = (tileRange + 1 - skewered) * 32
+	
+	hurt.shape.extents.y = (tileRange - skewered) * 32 + 11
 	hurt.position.y = platform.position.y * 2 - hurt.shape.extents.y - 32
+	
+	animationMidSprite.scale.x = 0
+	animationMidSprite.position.y =  -32
+	
 	endSprite.position.y = -64 - (skewered*64)
+	
+	#make the meat platforms
 	for n in skewered:
 		var midSprite = SpriteNode.instance()
 		add_child(midSprite)
@@ -30,10 +39,18 @@ func set_collision_boxes(numSkewered):
 		midSprite.frame = 1
 		if cooked[n]:
 			midSprite.frame = 2
+	
+	#turn off kebab if at maxium range
 	if skewered >= tileRange:
 		hurt.call_deferred("set_disabled",true)
 
 func _on_Hurtbox_body_entered(body):
+	#Animation
+	endSprite.position.y = -64 - (tileRange*64)
+	animationMidSprite.scale.x = tileRange
+	animationMidSprite.position.y = -(animationMidSprite.scale.x*32) - 32
+	
+	#Kill the player
 	cooked.push_back(body.cooked)
 	body.kill("Kebab")
 	if rotation_degrees == 90 || rotation_degrees == 270:
