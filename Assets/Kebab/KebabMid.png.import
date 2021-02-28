@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/KebabEnd.png-94367b931eb72a61b4621eec5f4c7eec.stex"
+path="res://.import/KebabMid.png-e0c68467e2b0a7dd2ae069d421c165c7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/KebabEnd.png"
-dest_files=[ "res://.import/KebabEnd.png-94367b931eb72a61b4621eec5f4c7eec.stex" ]
+source_file="res://Assets/Kebab/KebabMid.png"
+dest_files=[ "res://.import/KebabMid.png-e0c68467e2b0a7dd2ae069d421c165c7.stex" ]
 
 [params]
 

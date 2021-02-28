@@ -36,6 +36,10 @@ func set_collision_boxes(numSkewered):
 func _on_Hurtbox_body_entered(body):
 	cooked.push_back(body.cooked)
 	body.kill("Kebab")
+	if rotation_degrees == 90 || rotation_degrees == 270:
+		body.global_position.y = global_position.y
+	else:
+		body.global_position.x = global_position.x
 	body.sprite.connect("animation_finished", $".", "extend_kebab")
 
 func extend_kebab():

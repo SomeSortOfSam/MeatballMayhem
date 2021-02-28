@@ -9,10 +9,11 @@
 [ext_resource path="res://Assets/Ending_Plate.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Grinders.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Hotplate.png" type="Texture" id=9]
-[ext_resource path="res://Assets/KebabHead.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Kebab/KebabHead.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Flame.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Flamer.png" type="Texture" id=12]
-[ext_resource path="res://Assets/KebabMid.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Kebab/KebabMid.png" type="Texture" id=13]
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 64, 64, 0, 64, 64, 0, 64 )
