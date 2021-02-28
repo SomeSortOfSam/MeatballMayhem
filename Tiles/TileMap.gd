@@ -1,31 +1,47 @@
 extends TileMap
 
 onready var KillNode = preload("res://Tiles/Spikes.tscn")
-onready var DestroyNode = preload("res://Tiles/Grinder.tscn")
-onready var WinNode = preload("res://Tiles/Level Win.tscn")
-onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
-onready var OvenNode = preload("res://Tiles/Oven.tscn")
-onready var FlamethrowerNode = preload("res://Tiles/FlameThrower.tscn")
-onready var KebabHeadNode = preload("res://Tiles/Kebab.tscn")
-onready var FreezerNode = preload("res://Tiles/Freezer.tscn")
-
 export(int) var killID = 2
 export(float, 0, 1) var flipPercent = .3
+
+onready var DestroyNode = preload("res://Tiles/Grinder.tscn")
 export(int) var destroyID = 5
+
+onready var WinNode = preload("res://Tiles/Level Win.tscn")
 export(int) var winID = 4
 export(String, FILE, "*.tscn") var nextLevel = "res://Levels/Level.tscn"
+export(bool) var requireCooked
+export(bool) var requireSalt
+export(bool) var requireGarnish
+
+onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
 export(int) var checkpointId = 3
+
+onready var OvenNode = preload("res://Tiles/Oven.tscn")
 export(int) var ovenId = 6
+
+onready var FlamethrowerNode = preload("res://Tiles/FlameThrower.tscn")
 export(int) var flamethrowerId = 9
 export(int) var flameId = 10
+
+onready var KebabHeadNode = preload("res://Tiles/Kebab.tscn")
 export(int) var kebabHeadId = 11
 export(int) var kebabSpikeId = 12
+
+onready var FreezerNode = preload("res://Tiles/Freezer.tscn")
 export(int) var freezerId = 13
+
+onready var ShakerNode = preload("res://Tiles/Shaker.tscn")
+export(int) var shakerId = 14
+
+onready var GarnisherNode = preload("res://Tiles/Garnisher.tscn")
+export(int) var garnisherId = 15
 
 var markers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	var rand = RandomNumberGenerator.new()
 	for spike in replace_tiles(killID, KillNode):
 		if rand.randf_range(0,1) <= flipPercent:
@@ -35,6 +51,9 @@ func _ready():
 	
 	for winNode in replace_tiles(winID, WinNode):
 		winNode.nextLevel = nextLevel
+		winNode.requireCooked= requireCooked
+		winNode.requireSalt = requireSalt
+		winNode.requireGarnish = requireGarnish
 	
 	replace_tiles(checkpointId, CheckpointNode)
 	
@@ -45,6 +64,10 @@ func _ready():
 	replace_tiles_with_length_value(kebabHeadId,KebabHeadNode,kebabSpikeId)
 	
 	replace_tiles(freezerId,FreezerNode,true)
+	
+	replace_tiles(shakerId,ShakerNode)
+	
+	replace_tiles(garnisherId,GarnisherNode)
 	
 	clear_marker_tiles()
 
