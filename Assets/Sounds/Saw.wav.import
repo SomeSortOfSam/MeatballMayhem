@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Saw.wav-1a688c12c09623121f7bf0ec52f4b63d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Saw.wav"
+dest_files=[ "res://.import/Saw.wav-1a688c12c09623121f7bf0ec52f4b63d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
