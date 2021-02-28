@@ -13,12 +13,25 @@ onready var sprite = $AnimatedSprite
 
 var cooked = false
 
+func _ready():
+	set_physics_process(false)
+	animate("Respawn","post_ready")
+
+func post_ready():
+	set_physics_process(true)
+	sprite.disconnect("animation_finished", $".", "post_ready")
+
 func set_new_checkpoint():
 	emit_signal("new_checkpoint")
 
 func _physics_process(_delta):
 	var inputVector = Vector2.ZERO
 	inputVector.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * acceleration
+	if is_on_floor():
+		if inputVector.x != 0:
+			animate("Walk")
+		else:
+			animate("Idel")
 	if is_on_floor() && Input.is_action_just_pressed("ui_up"):
 		velocity.y -= jumpHeight * gravity
 		animate("Jump","fall")
@@ -29,7 +42,7 @@ func _physics_process(_delta):
 	velocity.x = lerp(clamp(velocity.x,-maxSpeed,maxSpeed),0,.1)
 	velocity = move_and_slide(velocity,Vector2.UP)
 	
-	sprite.flip_h = velocity.x <= 0
+	sprite.flip_h = velocity.x < 0
 
 func fall():
 	animate("Midair")
