@@ -9,8 +9,7 @@ export(float) var gravity = 9.8
 export(float) var jumpHeight = 10
 var velocity = Vector2.ZERO
 
-onready var animatior = $Sprite/AnimationPlayer
-onready var sprite = $Sprite
+onready var sprite = $AnimatedSprite
 
 var cooked = false
 
@@ -22,8 +21,7 @@ func _physics_process(_delta):
 	inputVector.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * acceleration
 	if is_on_floor() && Input.is_action_just_pressed("ui_up"):
 		velocity.y -= jumpHeight * gravity
-		animate("Jump")
-		animatior.connect("animation_finished", $".", "fall")
+		animate("Jump","fall")
 	else:
 		inputVector.y += gravity
 	
@@ -35,28 +33,31 @@ func _physics_process(_delta):
 
 func fall(_jump):
 	animate("Midair")
-	animatior.disconnect("animation_finished", $".", "fall")
+	sprite.disconnect("animation_finished", $".", "fall")
 
 func land():
 	animate("Idel")
 
-func kill(keep):
+func kill(deathAnimation : String):
+	set_physics_process(false)
+	animate("Death_" + deathAnimation,"dead")
+	
+	
+func dead():
 	emit_signal("death")
-	if keep:
-		animate("Death_Spike")
-	else:
-		animate("Death_Saw")
 	#Checkpoint should free node - remote transform dies before we can get to it otherwise
 	#queue_free()
 
 func cook():
 	if cooked:
-		kill(false)
+		kill("Burn")
 	else:
 		cooked = true
 
-func animate(animation):
+func animate(animation : String,endFunction = ""):
+	if endFunction != "":
+		sprite.connect("animation_finished", $".", endFunction)
 	if cooked:
-		animatior.play(animation + "_cooked")
+		sprite.play(animation + "_Cooked")
 	else:
-		animatior.play(animation + "_Uncooked")
+		sprite.play(animation + "_Uncooked")

@@ -35,5 +35,5 @@ func set_collision_boxes(numSkewered):
 
 func _on_Hurtbox_body_entered(body):
 	cooked.push_back(body.cooked)
-	body.kill(true)
+	body.kill("Kebab")
 	set_collision_boxes(skewered + 1)
