@@ -9,7 +9,7 @@ extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
-extents = Vector2( 1, 1 )
+extents = Vector2( 0.585938, 1 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Flame"
