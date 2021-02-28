@@ -17,8 +17,8 @@ export(int) var checkpointId = 3
 export(int) var ovenId = 6
 export(int) var flamethrowerId = 9
 export(int) var flameId = 10
-export(int) var kebabHeadId = 7
-export(int) var kebabSpikeId = 8
+export(int) var kebabHeadId = 11
+export(int) var kebabSpikeId = 12
 
 var markers = []
 
