@@ -10,8 +10,13 @@ export(float) var jumpHeight = 10
 var velocity = Vector2.ZERO
 
 onready var sprite = $AnimatedSprite
+onready var saltHat = $AnimatedSprite/Salt
+onready var garnishHat = $AnimatedSprite/Garnish
 
 var cooked = false
+var salted = false
+var garnished = false
+
 export(bool) var hasDoneDeluxeRespawn = true
 
 func _ready():
@@ -55,14 +60,10 @@ func fall():
 	animate("Midair")
 	sprite.disconnect("animation_finished", $".", "fall")
 
-func land():
-	animate("Idel")
-
 func kill(deathAnimation : String):
 	set_physics_process(false)
 	animate("Death_" + deathAnimation,"dead")
-	
-	
+
 func dead():
 	sprite.disconnect("animation_finished", $".", "dead")
 	emit_signal("death")
@@ -79,6 +80,14 @@ func cook():
 			var animation = sprite.animation
 			animation.erase(animation.length() - 9,9)
 			animate(animation)
+
+func salt():
+	salted = true
+	saltHat.set_visible(true)
+
+func garnish():
+	garnished = true
+	garnishHat.set_visible(true)
 
 func animate(animation : String,endFunction = ""):
 	if endFunction != "":

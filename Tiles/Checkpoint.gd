@@ -6,6 +6,8 @@ var curMeatball
 var cameraTransform
 
 var was_cooked = false
+var was_salted = false
+var was_garnished = false
 
 func _on_Checkpoint_body_entered(body):
 	if curMeatball == null:
@@ -14,6 +16,8 @@ func _on_Checkpoint_body_entered(body):
 		
 		connect_meatball(body)
 		was_cooked = body.cooked
+		was_salted = body.salted
+		was_garnished = body.garnished
 		cameraTransform = body.get_node("RemoteTransform2D")
 		
 		$Sprite.frame = 0
@@ -23,10 +27,17 @@ func _on_meatball_death():
 	get_tree().current_scene.call_deferred("add_child",meatball)
 	meatball.global_position = global_position
 	curMeatball.remove_child(cameraTransform)
+	curMeatball.queue_free()
 	meatball.add_child(cameraTransform)
+	
+	#Return state
 	if was_cooked:
 		meatball.cook()
-	curMeatball.queue_free()
+	if was_garnished:
+		meatball.garnish()
+	if was_salted:
+		meatball.salt()
+	
 	connect_meatball(meatball)
 
 func connect_meatball(meatball):

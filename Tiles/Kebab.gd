@@ -4,6 +4,7 @@ onready var platform = $CollisionShape2D
 onready var hurt = $Hurtbox/CollisionShape2D
 onready var endSprite = $EndSprite
 onready var animationMidSprite = $MidSprite
+onready var numbers = $Numbers
 
 #hurtbox should extend one PAST this
 export(int) var tileRange = 3
@@ -39,6 +40,14 @@ func set_collision_boxes(numSkewered):
 		midSprite.frame = 1
 		if cooked[n]:
 			midSprite.frame = 2
+	
+	numbers.rotation = -rotation
+	var n = tileRange - skewered
+	if n < 1:
+		n = 9
+	else:
+		n -= 1
+	numbers.frame = n
 	
 	#turn off kebab if at maxium range
 	if skewered >= tileRange:
