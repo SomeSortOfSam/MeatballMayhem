@@ -12,10 +12,14 @@ var velocity = Vector2.ZERO
 onready var sprite = $AnimatedSprite
 
 var cooked = false
+export(bool) var hasDoneDeluxeRespawn = true
 
 func _ready():
 	set_physics_process(false)
-	animate("Respawn","post_ready")
+	if hasDoneDeluxeRespawn:
+		animate("Respawn","post_ready")
+	else:
+		animate("Respawn_Deluxe","post_ready")
 
 func post_ready():
 	set_physics_process(true)
@@ -28,10 +32,13 @@ func _physics_process(_delta):
 	var inputVector = Vector2.ZERO
 	inputVector.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * acceleration
 	if is_on_floor():
+		rotation = get_floor_normal().angle() + PI/2
 		if inputVector.x != 0:
 			animate("Walk")
 		else:
 			animate("Idel")
+	else:
+		rotation = 0
 	if is_on_floor() && Input.is_action_just_pressed("ui_up"):
 		velocity.y -= jumpHeight * gravity
 		animate("Jump","fall")
@@ -67,6 +74,11 @@ func cook():
 		kill("Burn")
 	else:
 		cooked = true
+		#change current animation to cooked state
+		if sprite is AnimatedSprite:
+			var animation = sprite.animation
+			animation.erase(animation.length() - 9,9)
+			animate(animation)
 
 func animate(animation : String,endFunction = ""):
 	if endFunction != "":
