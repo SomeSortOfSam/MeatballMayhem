@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Tiles/TileMap.gd" type="Script" id=1]
 [ext_resource path="res://Meatball/Meatball.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Assets/Freezer.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Garnish Giver.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Shaker.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Background.png" type="Texture" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 64, 64, 0, 64, 64, 0, 64 )
@@ -443,5 +444,8 @@ position = Vector2( 0, 0 )
 
 [node name="BottomRight" parent="Camera2D/Node" index="1"]
 position = Vector2( 1024, 600 )
+
+[node name="Backround" type="Sprite" parent="."]
+texture = ExtResource( 17 )
 
 [editable path="Camera2D"]
