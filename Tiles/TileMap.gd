@@ -8,16 +8,19 @@ onready var OvenNode = preload("res://Tiles/Oven.tscn")
 onready var FlamethrowerNode = preload("res://Tiles/FlameThrower.tscn")
 onready var KebabHeadNode = preload("res://Tiles/Kebab.tscn")
 
-export(int) var killID = 1
+export(int) var killID = 2
 export(float, 0, 1) var flipPercent = .3
-export(int) var destroyID = 2
-export(int) var winID = 3
+export(int) var destroyID = 5
+export(int) var winID = 4
 export(String, FILE, "*.tscn") var nextLevel = "res://Levels/Level.tscn"
-export(int) var checkpointId = 4
-export(int) var ovenId = 5
-export(int) var flamethrowerId = 6
+export(int) var checkpointId = 3
+export(int) var ovenId = 6
+export(int) var flamethrowerId = 9
+export(int) var flameId = 10
 export(int) var kebabHeadId = 7
 export(int) var kebabSpikeId = 8
+
+var markers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,19 +38,12 @@ func _ready():
 	
 	replace_tiles(ovenId, OvenNode)
 	
-	replace_tiles(flamethrowerId,FlamethrowerNode,true)
+	replace_tiles_with_length_value(flamethrowerId,FlamethrowerNode,flameId)
 	
-	for kebab in replace_tiles(kebabHeadId, KebabHeadNode, true):
-		var pos = world_to_map(kebab.global_position)
-		var angle = kebab.get_rotation()
-		var direction = Vector2(sin(angle), -cos(angle))
-		kebab.tileRange = 0
-		pos += direction
-		while get_cellv(pos) != -1:
-			print(str(pos) + " + " + str(direction) + " has " + str(get_cellv(pos+ direction)))
-			kebab.tileRange += 1
-			set_cellv(pos,-1)
-			pos += direction
+	replace_tiles_with_length_value(kebabHeadId,KebabHeadNode,kebabSpikeId)
+	
+	clear_marker_tiles()
+
 
 func replace_tiles(id, packedNode, preserveRotation = false):
 	var cells = get_used_cells_by_id(id)
@@ -66,7 +62,7 @@ func replace_tiles(id, packedNode, preserveRotation = false):
 		elif is_cell_x_flipped(cell.x,cell.y):
 			node.get_node("Sprite").set_flip_h(true)
 		
-		set_cellv(cell,-1)
+		markers.push_back(cell)
 		nodes.push_back(node)
 	return nodes
 
@@ -90,3 +86,20 @@ func get_cell_rotationV(cell):
 		return Vector2.UP
 	else:
 		return Vector2.ZERO
+
+func replace_tiles_with_length_value(headId, headNode, limbId):
+	for cell in replace_tiles(headId, headNode, true):
+		var pos = world_to_map(cell.global_position)
+		var angle = cell.get_rotation()
+		var direction = Vector2(sin(angle), -cos(angle))
+		cell.tileRange = 0
+		pos += direction
+		while get_cellv(pos) == limbId:
+			print(str(pos) + " + " + str(direction) + " has " + tile_set.tile_get_name(get_cellv(pos+ direction)))
+			cell.tileRange += 1
+			markers.push_back(pos)
+			pos += direction
+
+func clear_marker_tiles():
+	for cell in markers:
+		set_cellv(cell,-1)

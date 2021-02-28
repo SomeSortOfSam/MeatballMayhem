@@ -1,12 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Tiles/FlameThrower.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Flamer.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
 extents = Vector2( 32, 32 )
 
 [node name="FlameThrower" type="StaticBody2D"]
@@ -20,16 +21,11 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 0, -192 )
-collision_mask = 2
-collide_with_areas = true
-
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+self_modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 0, -64 )
 shape = SubResource( 2 )
 
