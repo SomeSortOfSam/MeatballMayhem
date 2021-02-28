@@ -7,6 +7,7 @@ onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
 onready var OvenNode = preload("res://Tiles/Oven.tscn")
 onready var FlamethrowerNode = preload("res://Tiles/FlameThrower.tscn")
 onready var KebabHeadNode = preload("res://Tiles/Kebab.tscn")
+onready var FreezerNode = preload("res://Tiles/Freezer.tscn")
 
 export(int) var killID = 2
 export(float, 0, 1) var flipPercent = .3
@@ -19,6 +20,7 @@ export(int) var flamethrowerId = 9
 export(int) var flameId = 10
 export(int) var kebabHeadId = 11
 export(int) var kebabSpikeId = 12
+export(int) var freezerId = 13
 
 var markers = []
 
@@ -41,6 +43,8 @@ func _ready():
 	replace_tiles_with_length_value(flamethrowerId,FlamethrowerNode,flameId)
 	
 	replace_tiles_with_length_value(kebabHeadId,KebabHeadNode,kebabSpikeId)
+	
+	replace_tiles(freezerId,FreezerNode,true)
 	
 	clear_marker_tiles()
 

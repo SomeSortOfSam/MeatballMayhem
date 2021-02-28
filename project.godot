@@ -84,8 +84,7 @@ ui_down={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Platform"
-2d_physics/layer_3="Hurt"
-2d_physics/layer_4="Destroy"
+2d_physics/layer_3="Box"
 
 [rendering]
 

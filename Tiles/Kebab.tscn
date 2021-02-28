@@ -40,6 +40,7 @@ texture = ExtResource( 4 )
 vframes = 3
 
 [node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 self_modulate = Color( 0.0666667, 0.0745098, 0.643137, 0.729412 )
