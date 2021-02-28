@@ -5,12 +5,11 @@ onready var sprite = $Sprite
 
 export(String, FILE, "*.tscn") var nextLevel
 
-export(bool) var requireCooked = true
 export(bool) var requireSalt = false
 export(bool) var requireGarnish = false
 
 func _on_Level_Win_body_entered(body):
-	if requireCooked && !body.cooked:
+	if !body.cooked:
 		sprite.frame = 1
 		timer.start(1)
 	elif (requireSalt && !body.salted) || (!requireSalt && body.salted):

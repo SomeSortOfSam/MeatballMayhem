@@ -10,9 +10,9 @@ export(int) var destroyID = 5
 onready var WinNode = preload("res://Tiles/Level Win.tscn")
 export(int) var winID = 4
 export(String, FILE, "*.tscn") var nextLevel = "res://Levels/Level.tscn"
-export(bool) var requireCooked
 export(bool) var requireSalt
 export(bool) var requireGarnish
+onready var order = $CanvasLayer/Order
 
 onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
 export(int) var checkpointId = 3
@@ -41,6 +41,9 @@ var markers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	order.requireSalt = requireSalt
+	order.requireGarnish = requireGarnish
+	order.update_texture()
 	
 	var rand = RandomNumberGenerator.new()
 	for spike in replace_tiles(killID, KillNode):
@@ -51,7 +54,6 @@ func _ready():
 	
 	for winNode in replace_tiles(winID, WinNode):
 		winNode.nextLevel = nextLevel
-		winNode.requireCooked= requireCooked
 		winNode.requireSalt = requireSalt
 		winNode.requireGarnish = requireGarnish
 	
