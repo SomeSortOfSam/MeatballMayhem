@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Tiles/TileMap.gd" type="Script" id=1]
 [ext_resource path="res://Meatball/Meatball.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/Flamer.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Kebab/KebabMid.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Freezer.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Background....png" type="Texture" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 64, 64, 0, 64, 64, 0, 64 )
@@ -383,6 +384,8 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 48, 0, 48 )
 13/shapes = [  ]
 13/z_index = -1
 
+[sub_resource type="TileSet" id=23]
+
 [node name="Level" type="Node2D"]
 
 [node name="MeatBall" parent="." instance=ExtResource( 2 )]
@@ -413,5 +416,23 @@ position = Vector2( 0, 0 )
 
 [node name="BottomRight" parent="Camera2D/Node" index="1"]
 position = Vector2( 1024, 600 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2( 1, 1 )
+motion_mirroring = Vector2( 1204, 600 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 15 )
+vframes = 2
+hframes = 2
+region_rect = Rect2( 0, 0, 320, 160 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TileMap" type="TileMap" parent="ParallaxBackground/ParallaxLayer2"]
+tile_set = SubResource( 23 )
+format = 1
 
 [editable path="Camera2D"]
