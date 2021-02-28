@@ -41,8 +41,9 @@ func _ready():
 		var pos = world_to_map(kebab.global_position)
 		var direction = get_cell_rotationV(pos)
 		kebab.tileRange = 0
-		while get_cellv(pos + direction) == kebabSpikeId:
+		while get_cellv(pos + direction) != -1:
 			kebab.tileRange += 1
+			set_cellv(pos,-1)
 			pos += direction
 
 func replace_tiles(id, packedNode, preserveRotation = false):
