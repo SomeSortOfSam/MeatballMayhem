@@ -27,7 +27,4 @@ position = Vector2( -406.955, -342.069 )
 [node name="BottomRight" parent="Camera2D/Node" index="1"]
 position = Vector2( 1105.22, 366.788 )
 
-[node name="Backround" parent="." index="3"]
-position = Vector2( -24.0815, -28.2437 )
-
 [editable path="Camera2D"]
