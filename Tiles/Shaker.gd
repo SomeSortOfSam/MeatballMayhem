@@ -10,3 +10,5 @@ func _on_Shaker_body_entered(body):
 
 func _on_Sprite_animation_finished():
 	meatball.salt()
+	sprite.playing = false
+	sprite.frame = 0
