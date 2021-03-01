@@ -50,7 +50,7 @@ func _ready():
 		if rand.randf_range(0,1) <= flipPercent:
 			spike.get_node("Sprite").flip_h = true
 	
-	replace_tiles(destroyID, DestroyNode)
+	replace_tiles(destroyID, DestroyNode,true)
 	
 	for winNode in replace_tiles(winID, WinNode):
 		winNode.nextLevel = nextLevel

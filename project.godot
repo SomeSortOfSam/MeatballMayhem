@@ -23,6 +23,10 @@ config/icon="res://icon.png"
 
 GlobalAudioStreamPlayer="*res://AudioStreamPlayer.tscn"
 
+[global]
+
+backround=false
+
 [importer_defaults]
 
 texture={
