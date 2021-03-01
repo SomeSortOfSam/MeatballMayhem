@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Main Menu/MenuButtons/MenuButtons_4-3.png.png" type="Texture" id=1]
+[ext_resource path="res://Main Menu/MenuButtons/MenuButtons_4-2.png.png" type="Texture" id=2]
+[ext_resource path="res://Main Menu/MenuButtons/MenuButtons_4-1.png.png" type="Texture" id=3]
+[ext_resource path="res://ARCADECLASSIC.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://Main Menu/Credits_Showoff-2.png.png" type="Texture" id=5]
+[ext_resource path="res://Main Menu/Credits_Showoff-1.png.png" type="Texture" id=6]
+[ext_resource path="res://Main Menu/Settings.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+mainMenu = "res://Main Menu/Main Menu.tscn"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 176.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -480.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Del Rio Bravo by Kevin MacLeod
+Link: https://incompetech.filmmusic.io/song/5706-del-rio-bravo
+License: https://filmmusic.io/standard-license"
+align = 2
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sam" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -300.0
+margin_right = 300.0
+texture = ExtResource( 6 )
+
+[node name="Ivy" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -300.0
+texture = ExtResource( 5 )
+[connection signal="pressed" from="TextureButton" to="." method="_on_Back_pressed"]

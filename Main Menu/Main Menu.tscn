@@ -21,6 +21,7 @@ __meta__ = {
 }
 nextLevel = "res://Levels/Level01.tscn"
 settingsMenu = "res://Main Menu/Settings.tscn"
+credits = "res://Main Menu/Credits.tscn"
 
 [node name="TitleText" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -34,7 +35,6 @@ margin_bottom = 112.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
-expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
