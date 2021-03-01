@@ -18,7 +18,19 @@ var cooked = false
 var salted = false
 var garnished = false
 
+var paused = false
+
 export(bool) var hasDoneDeluxeRespawn = true
+
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		paused = !paused
+		if paused:
+			set_physics_process(false)
+			sprite.playing = false
+		else:
+			set_physics_process(true)
+			sprite.playing = true
 
 func _ready():
 	set_physics_process(false)

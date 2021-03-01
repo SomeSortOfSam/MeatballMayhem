@@ -4,7 +4,6 @@ onready var Box = preload("res://Meatball/Frozen.tscn")
 
 onready var sprite = $Sprite
 
-export(Texture) var cookedTexture
 var entered
 
 func _on_Freezer_body_entered(body):

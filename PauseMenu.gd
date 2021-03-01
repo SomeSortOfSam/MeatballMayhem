@@ -1,9 +1,9 @@
 extends CanvasLayer
 
 onready var popup = $Popup
-onready var order = $Order
-onready var orderAnimation = $Order/AnimationPlayer
-onready var timer = $Order/Timer
+onready var order = $Node2D/Order
+onready var orderAnimation = $Node2D/Order/AnimationPlayer
+onready var timer = $Node2D/Order/Timer
 onready var nameText = $Popup/Label
 
 var paused = false
