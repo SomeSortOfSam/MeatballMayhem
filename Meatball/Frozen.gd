@@ -25,14 +25,10 @@ func _process(_delta):
 func _physics_process(_delta):
 	var inputVector = Vector2.ZERO
 	if left.is_colliding():
-		inputVector.x -= acceleration
-	if right.is_colliding():
 		inputVector.x += acceleration
-	if is_on_floor():
-		rotation = get_floor_normal().angle() + PI/2
-	else:
-		rotation = 0
-		inputVector.y += gravity
+	if right.is_colliding():
+		inputVector.x -= acceleration
+	inputVector.y += gravity
 	
 	velocity += inputVector
 	velocity.x = lerp(clamp(velocity.x,-maxSpeed,maxSpeed),0,.1)

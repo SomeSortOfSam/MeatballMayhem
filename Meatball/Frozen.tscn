@@ -11,48 +11,48 @@ atlas = ExtResource( 1 )
 region = Rect2( 25, 25, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 25, 25 )
+atlas = ExtResource( 4 )
+region = Rect2( 25, 25, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
-region = Rect2( 25, 0, 25, 25 )
+region = Rect2( 0, 0, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 50, 0, 25, 25 )
+region = Rect2( 25, 0, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 25, 25, 25 )
+region = Rect2( 50, 0, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
-region = Rect2( 25, 25, 25, 25 )
+region = Rect2( 0, 25, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
-region = Rect2( 50, 25, 25, 25 )
+region = Rect2( 25, 25, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 50, 25, 25 )
+region = Rect2( 50, 25, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 3 )
-region = Rect2( 25, 50, 25, 25 )
+region = Rect2( 0, 50, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 3 )
-region = Rect2( 50, 50, 25, 25 )
+region = Rect2( 25, 50, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 75, 25, 25 )
+region = Rect2( 50, 50, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 25, 25, 25, 25 )
+atlas = ExtResource( 3 )
+region = Rect2( 0, 75, 25, 25 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
@@ -101,14 +101,14 @@ animations = [ {
 "name": "_Uncooked",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": false,
-"name": "Melt_Cooked",
-"speed": 12.0
-}, {
-"frames": [ SubResource( 12 ) ],
+"frames": [ SubResource( 2 ) ],
 "loop": false,
 "name": "_Cooked",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": false,
+"name": "Melt_Cooked",
 "speed": 12.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
@@ -117,8 +117,9 @@ animations = [ {
 "speed": 12.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 32, 32 )
+[sub_resource type="CapsuleShape2D" id=24]
+radius = 27.5484
+height = 0.0
 
 [node name="IceCube" type="KinematicBody2D"]
 collision_layer = 4
@@ -133,12 +134,15 @@ animation = "_Cooked"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.944946, 0.629963 )
 shape = SubResource( 24 )
 
 [node name="Left" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( -50, 0 )
+collision_mask = 5
 
 [node name="Right" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 50, 0 )
+collision_mask = 5
