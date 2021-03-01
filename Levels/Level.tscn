@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Tiles/TileMap.gd" type="Script" id=1]
 [ext_resource path="res://Meatball/Meatball.tscn" type="PackedScene" id=2]
@@ -17,11 +17,9 @@
 [ext_resource path="res://Assets/Garnish Giver.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Shaker.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Background.png" type="Texture" id=17]
-[ext_resource path="res://Assets/Order/OrderPaper-1.png.png" type="Texture" id=18]
-[ext_resource path="res://Levels/Order.gd" type="Script" id=19]
-[ext_resource path="res://Assets/Order/OrderPaper-4.png.png" type="Texture" id=20]
-[ext_resource path="res://Assets/Order/OrderPaper-2.png.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Order/OrderPaper-3.png.png" type="Texture" id=22]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Assets/DecorTiles_1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/ImportantMessages(1).png" type="Texture" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 64, 64, 0, 64, 64, 0, 64 )
@@ -419,37 +417,51 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 48, 0, 48 )
 15/shapes = [  ]
 15/z_index = 0
 
-[sub_resource type="Animation" id=23]
-resource_name = "End"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 72 ), Vector2( 0, -288 ) ]
-}
+[sub_resource type="TileSet" id=23]
+0/name = "DecorTiles_1.png 0"
+0/texture = ExtResource( 23 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 192 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
-[sub_resource type="Animation" id=24]
-resource_name = "Start"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -288 ), Vector2( 0, 72 ) ]
-}
+[sub_resource type="TileSet" id=24]
+0/name = "ImportantMessages(1).png 0"
+0/texture = ExtResource( 24 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 256, 256 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 128, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="Level" type="Node2D"]
 
@@ -473,26 +485,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="StaticBody2D/TileMap"]
+[node name="PauseMenu" parent="StaticBody2D/TileMap" instance=ExtResource( 18 )]
 
-[node name="Order" type="TextureRect" parent="StaticBody2D/TileMap/CanvasLayer"]
-margin_top = -288.0
-margin_right = 200.0
-margin_bottom = 12.0
-rect_rotation = -20.0
-texture = ExtResource( 18 )
-script = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-textures = [ ExtResource( 20 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 18 ) ]
+[node name="Decor Tiles" type="TileMap" parent="StaticBody2D"]
+z_index = -2
+tile_set = SubResource( 23 )
+format = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D/TileMap/CanvasLayer/Order"]
-autoplay = "Start"
-anims/End = SubResource( 23 )
-anims/Start = SubResource( 24 )
-
-[node name="Timer" type="Timer" parent="StaticBody2D/TileMap/CanvasLayer/Order"]
+[node name="Tutorial Messages" type="TileMap" parent="StaticBody2D"]
+z_index = -1
+tile_set = SubResource( 24 )
+format = 1
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 0 )
@@ -503,10 +506,20 @@ position = Vector2( 0, 0 )
 [node name="BottomRight" parent="Camera2D/Node" index="1"]
 position = Vector2( 1024, 600 )
 
-[node name="Backround" type="Sprite" parent="."]
-z_index = -2
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enable = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1960, 1960 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_right = 2024.0
+margin_bottom = 2024.0
 texture = ExtResource( 17 )
-[connection signal="animation_finished" from="StaticBody2D/TileMap/CanvasLayer/Order/AnimationPlayer" to="StaticBody2D/TileMap/CanvasLayer/Order" method="_on_AnimationPlayer_animation_finished" flags=6]
-[connection signal="timeout" from="StaticBody2D/TileMap/CanvasLayer/Order/Timer" to="StaticBody2D/TileMap/CanvasLayer/Order" method="_on_Timer_timeout" flags=6]
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="Camera2D"]

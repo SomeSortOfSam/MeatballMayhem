@@ -5,8 +5,8 @@ export(String, FILE, "*.tscn") var settingsMenu
 export(String, FILE, "*.tscn") var credits
 
 
-func _on_Settings_pressed():
-	get_tree().change_scene(settingsMenu)
+func _on_Exit_pressed():
+	get_tree().quit()
 
 
 func _on_PlayGame_pressed():

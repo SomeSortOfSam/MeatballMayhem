@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Main Menu/Title.png" type="Texture" id=1]
 [ext_resource path="res://Main Menu/MenuButtons/sprite_2.png" type="Texture" id=2]
 [ext_resource path="res://Main Menu/Main Menu.gd" type="Script" id=3]
 [ext_resource path="res://Main Menu/MenuButtons/sprite_1.png" type="Texture" id=4]
-[ext_resource path="res://Main Menu/MenuButtons/sprite_5.png" type="Texture" id=5]
-[ext_resource path="res://Main Menu/MenuButtons/sprite_3.png" type="Texture" id=6]
+[ext_resource path="res://Main Menu/Menu_Background.png" type="Texture" id=5]
+[ext_resource path="res://Main Menu/MenuButtons/MenuButtons_4-1.png.png" type="Texture" id=6]
 [ext_resource path="res://Main Menu/MenuButtons/sprite_7.png" type="Texture" id=7]
 [ext_resource path="res://Main Menu/MenuButtons/sprite_8.png" type="Texture" id=8]
-[ext_resource path="res://Main Menu/MenuButtons/sprite_4.png" type="Texture" id=9]
+[ext_resource path="res://Main Menu/MenuButtons/MenuButtons_4-3.png.png" type="Texture" id=9]
 [ext_resource path="res://Main Menu/MenuButtons/sprite_6.png" type="Texture" id=10]
 [ext_resource path="res://Main Menu/MenuButtons/sprite_0.png" type="Texture" id=11]
+[ext_resource path="res://Main Menu/MenuButtons/MenuButtons_4-2.png.png" type="Texture" id=12]
 
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
@@ -21,6 +22,17 @@ __meta__ = {
 }
 nextLevel = "res://Levels/Level01.tscn"
 settingsMenu = "res://Main Menu/Settings.tscn"
+credits = "res://Main Menu/Credits.tscn"
+
+[node name="Backround" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TitleText" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -34,7 +46,6 @@ margin_bottom = 112.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
-expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,14 +66,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="TextureButton" parent="Buttons"]
+[node name="Exit" type="TextureButton" parent="Buttons"]
 margin_right = 130.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 
@@ -89,6 +100,6 @@ texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
 expand = true
 stretch_mode = 5
-[connection signal="pressed" from="Buttons/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Buttons/PlayGame" to="." method="_on_PlayGame_pressed"]
 [connection signal="pressed" from="Buttons/Credits" to="." method="_on_Credits_pressed"]

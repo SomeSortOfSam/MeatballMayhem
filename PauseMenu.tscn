@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Levels/Order.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Order/OrderPaper-3.png.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Order/OrderPaper-1.png.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Order/OrderPaper-4.png.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Order/OrderPaper-2.png.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "End"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 72 ), Vector2( 0, -288 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -288 ), Vector2( 0, 72 ) ]
+}
+
+[node name="PauseMenu" type="CanvasLayer"]
+
+[node name="Order" type="TextureRect" parent="."]
+margin_top = -288.0
+margin_right = 200.0
+margin_bottom = 12.0
+rect_rotation = -20.0
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+textures = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ) ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Order"]
+autoplay = "Start"
+anims/End = SubResource( 1 )
+anims/Start = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="Order"]
+[connection signal="animation_finished" from="Order/AnimationPlayer" to="Order" method="_on_AnimationPlayer_animation_finished" flags=6]
+[connection signal="timeout" from="Order/Timer" to="Order" method="_on_Timer_timeout" flags=6]
