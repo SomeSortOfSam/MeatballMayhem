@@ -1,4 +1,12 @@
 extends Area2D
 
+onready var sprite = $Sprite
+
+var meatball
+
+func _on_Sprite_animation_finished():
+	meatball.garnish()
+
 func _on_Garnisher_body_entered(body):
-	body.garnish()
+	sprite.play("Garnish")
+	meatball = body

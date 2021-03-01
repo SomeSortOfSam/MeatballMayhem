@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Garnish Giver.png-9970e34ef7b93717bf7669bf3b719b50.stex"
+path="res://.import/Garnish_Giver.png-6666705d9fa3f0f4f2575675ce5b925d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Garnish Giver.png"
-dest_files=[ "res://.import/Garnish Giver.png-9970e34ef7b93717bf7669bf3b719b50.stex" ]
+source_file="res://Assets/Garnish_Giver.png"
+dest_files=[ "res://.import/Garnish_Giver.png-6666705d9fa3f0f4f2575675ce5b925d.stex" ]
 
 [params]
 

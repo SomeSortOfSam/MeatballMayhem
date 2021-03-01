@@ -10,8 +10,8 @@ func _on_Exit_pressed():
 
 
 func _on_PlayGame_pressed():
-	get_tree().change_scene(nextLevel)
+	var _scene = get_tree().change_scene(nextLevel)
 
 
 func _on_Credits_pressed():
-	get_tree().change_scene(credits)
+	var _scene = get_tree().change_scene(credits)
