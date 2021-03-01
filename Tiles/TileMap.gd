@@ -12,7 +12,7 @@ export(int) var winID = 4
 export(String, FILE, "*.tscn") var nextLevel = "res://Levels/Level.tscn"
 export(bool) var requireSalt
 export(bool) var requireGarnish
-onready var order = $PauseMenu/Order
+onready var order = $PauseMenu/Node2D/Order
 
 onready var CheckpointNode = preload("res://Tiles/Checkpoint.tscn")
 export(int) var checkpointId = 3

@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="MeatballMayhem"
+config/name="Meat your Maker"
 run/main_scene="res://Main Menu/Main Menu.tscn"
 config/icon="res://icon.png"
 
