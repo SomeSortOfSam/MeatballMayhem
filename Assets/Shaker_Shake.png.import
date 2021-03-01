@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Garnish Giver.png-9970e34ef7b93717bf7669bf3b719b50.stex"
+path="res://.import/Shaker_Shake.png-1cfac4e408813b62d73a636db25061f1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Garnish Giver.png"
-dest_files=[ "res://.import/Garnish Giver.png-9970e34ef7b93717bf7669bf3b719b50.stex" ]
+source_file="res://Assets/Shaker_Shake.png"
+dest_files=[ "res://.import/Shaker_Shake.png-1cfac4e408813b62d73a636db25061f1.stex" ]
 
 [params]
 

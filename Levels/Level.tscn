@@ -14,8 +14,8 @@
 [ext_resource path="res://Assets/Flamer.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Kebab/KebabMid.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Freezer.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Garnish Giver.png" type="Texture" id=15]
-[ext_resource path="res://Assets/Shaker.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Shaker_Shake.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Garnish_Giver.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Background.png" type="Texture" id=17]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Assets/DecorTiles_1.png" type="Texture" id=23]
@@ -388,7 +388,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 48, 0, 48 )
 13/shape_one_way_margin = 0.0
 13/shapes = [  ]
 13/z_index = -1
-14/name = "Shaker.png 14"
+14/name = "Garnish_Giver.png 14"
 14/texture = ExtResource( 16 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
@@ -402,7 +402,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 48, 0, 48 )
 14/shape_one_way_margin = 0.0
 14/shapes = [  ]
 14/z_index = 0
-15/name = "Garnish Giver.png 15"
+15/name = "Shaker_Shake.png 15"
 15/texture = ExtResource( 15 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
@@ -480,10 +480,13 @@ collision_use_parent = true
 collision_layer = 2
 collision_mask = 0
 format = 1
+tile_data = PoolIntArray( -589802, 3, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
+shakerId = 15
+garnisherId = 14
 
 [node name="PauseMenu" parent="StaticBody2D/TileMap" instance=ExtResource( 18 )]
 
