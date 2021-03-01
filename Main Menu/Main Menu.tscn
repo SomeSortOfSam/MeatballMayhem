@@ -20,7 +20,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-nextLevel = "res://Levels/Level01.tscn"
+nextLevel = "res://Levels/Tutorial01.tscn"
 settingsMenu = "res://Main Menu/Settings.tscn"
 credits = "res://Main Menu/Credits.tscn"
 
