@@ -25,7 +25,4 @@ position = Vector2( -1666.21, -320.814 )
 [node name="BottomRight" parent="Camera2D/Node" index="1"]
 position = Vector2( 444.679, 443.824 )
 
-[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
-visible = false
-
 [editable path="Camera2D"]
