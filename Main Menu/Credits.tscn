@@ -77,16 +77,23 @@ __meta__ = {
 [node name="Sam" type="TextureRect" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -300.0
-margin_right = 300.0
+margin_top = -420.0
+margin_right = 415.0
 texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Ivy" type="TextureRect" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -300.0
-margin_top = -300.0
+margin_left = -421.0
+margin_top = -417.0
 texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
 [connection signal="pressed" from="TextureButton" to="." method="_on_Back_pressed"]

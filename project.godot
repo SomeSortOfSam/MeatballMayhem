@@ -15,17 +15,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Meat your Maker"
+config/name="MeatballMayhem"
 run/main_scene="res://Main Menu/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 GlobalAudioStreamPlayer="*res://AudioStreamPlayer.tscn"
-
-[global]
-
-backround=false
 
 [importer_defaults]
 
