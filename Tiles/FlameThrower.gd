@@ -1,11 +1,6 @@
 extends StaticBody2D
 
 onready var hurtbox = $Hurtbox
-onready var animator = $Hurtbox/AnimationPlayer
-
-export(bool) var use_timer = false
-export(float) var up_time = 5
-export(float) var down_time = 2
 
 export(int) var tileRange = 0
 

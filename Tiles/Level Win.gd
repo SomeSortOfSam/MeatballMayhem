@@ -32,11 +32,7 @@ func _on_Level_Win_body_entered(body):
 	else:
 		audio.set_stream(good)
 		audio.play()
-		var curScene = get_tree().current_scene
-		var audio = curScene.get_node("AudioStreamPlayer")
-		curScene.remove_child(audio)
-		get_tree().change_scene(nextLevel)
-		get_tree().current_scene.call_deferred("add_child",audio)
+		var _scene = get_tree().change_scene(nextLevel)
 
 func _on_Timer_timeout():
 	sprite.frame = 0

@@ -19,5 +19,5 @@ func update_texture():
 func _on_Timer_timeout():
 	animation.play("End")
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	timer.start(2)
