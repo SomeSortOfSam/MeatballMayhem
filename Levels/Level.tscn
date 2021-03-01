@@ -516,6 +516,7 @@ follow_viewport_enable = true
 motion_mirroring = Vector2( 1960, 1960 )
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_left = -4497.0
 margin_right = 2024.0
 margin_bottom = 2024.0
 texture = ExtResource( 17 )
